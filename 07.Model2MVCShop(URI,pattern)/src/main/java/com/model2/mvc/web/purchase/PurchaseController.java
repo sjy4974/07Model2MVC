@@ -54,7 +54,7 @@ public class PurchaseController {
 	@RequestMapping( value="addPurchase", method=RequestMethod.GET)
 	public String addPurchase( @RequestParam("prodNo") int prodNo, Model model) throws Exception{
 		
-		System.out.println("/addPurchaseView.do");
+		System.out.println("/addPurchaseView : GET ");
 		
 		Product product = productService.getProduct(prodNo);
 		
@@ -70,7 +70,7 @@ public class PurchaseController {
 								@ModelAttribute("user") User user,
 									Model model) throws Exception{
 		
-		System.out.println("/addPurchase.do");
+		System.out.println("/addPurchase : POST");
 		
 		purchase.setTranCode("1");
 		purchase.setBuyer(user);
@@ -88,7 +88,7 @@ public class PurchaseController {
 	public String getPurchase( @RequestParam("tranNo") int tranNo,
 								Model model) throws Exception{
 		
-		System.out.println("/getPurchase.do");
+		System.out.println("/getPurchase : GET");
 		
 		Purchase purchase = purchaseService.getPurchase(tranNo);
 		
@@ -102,7 +102,7 @@ public class PurchaseController {
 	public String listPurchase( @ModelAttribute("search") Search search, Model model,
 								 HttpSession session ) throws Exception {
 		
-		System.out.println("/listPurchase.do");
+		System.out.println("/listPurchase");
 		
 		if(search.getCurrentPage() == 0) {
 			search.setCurrentPage(1);
@@ -128,7 +128,7 @@ public class PurchaseController {
 	@RequestMapping( value="updatePurchase", method=RequestMethod.GET)
 	public String updatePurchaseView( @RequestParam("tranNo") int tranNo, Model model) throws Exception{
 		
-		System.out.println("/updatePurchaseView.do");
+		System.out.println("/updatePurchaseView : GET");
 		
 		Purchase purchase = purchaseService.getPurchase(tranNo);
 		
@@ -141,7 +141,7 @@ public class PurchaseController {
 	@RequestMapping( value="updatePurchase", method=RequestMethod.POST)
 	public String updatePurchase( @ModelAttribute ("purchase") Purchase purchase) throws Exception{
 		
-		System.out.println("/updatePurchase.do");
+		System.out.println("/updatePurchase : POST");
 		
 		purchaseService.updatePurchase(purchase);
 		
@@ -155,7 +155,7 @@ public class PurchaseController {
 									@RequestParam("tranCode") String tranCode,
 									@RequestParam("page") int page) throws Exception {
 		
-		System.out.println("/updateTranCode.do");
+		System.out.println("/updateTranCode : GET");
 		
 		Purchase purchase = purchaseService.getPurchase(tranNo);
 
@@ -172,7 +172,7 @@ public class PurchaseController {
 											@RequestParam("tranCode") String tranCode,
 											@RequestParam("page") int page) throws Exception {
 		
-		System.out.println("/updateTranCodeByProd.do");
+		System.out.println("/updateTranCodeByProd : GET");
 		
 		Purchase purchase = purchaseService.getPurchase2(prodNo);
 		
